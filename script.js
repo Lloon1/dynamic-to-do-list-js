@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Select DOM elements
-    const addButton = document.getElementById('add-task-button');
+    const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function addTask() {
         // Retrieve and trim the value from the task input field
         const taskText = taskInput.value.trim();
-        
+
         // Check if the task input is empty
         if (taskText === "") {
             alert("Please enter a task.");
@@ -47,3 +47,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
