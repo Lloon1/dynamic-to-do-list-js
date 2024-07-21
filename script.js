@@ -13,19 +13,29 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to add a new task
     function addTask(taskText, save = true) {
         // Task creation logic
+        if (taskText.trim() === "") {
+            alert("Please enter a task.");
+            return;
+        }
+
+        // Create new list item
         const listItem = document.createElement('li');
         listItem.textContent = taskText;
 
+        // Create and configure remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = "Remove";
-        removeButton.setAttribute('class', 'remove-btn');
+        removeButton.classList.add('remove-btn'); // Using classList.add
         removeButton.onclick = function () {
             // Remove task from DOM and Local Storage
             taskList.removeChild(listItem);
             removeTaskFromLocalStorage(taskText);
         };
 
+        // Append remove button to list item
         listItem.appendChild(removeButton);
+
+        // Append list item to task list
         taskList.appendChild(listItem);
 
         // Save to Local Storage
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Add event listener to the task input field to add tasks on pressing "Enter"
+    // Add event listener to task input field to add tasks on pressing "Enter"
     taskInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             const taskText = taskInput.value.trim();
@@ -65,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 alert("Please enter a task.");
             }
+            event.preventDefault(); // Prevent form submission
         }
     });
 
